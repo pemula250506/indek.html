@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menghitung - TK Nurul Ikhlas</title>
+    <style>
+        body { font-family: 'Comic Sans MS', cursive, sans-serif; margin: 0; background-color: #e0f7fa; display: flex; flex-direction: column; align-items: center; height: 100vh; overflow: hidden; }
+        header { width: 100%; padding: 20px; text-align: center; background: white; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .btn-kembali { text-decoration: none; background: #4A90E2; color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; float: left; }
+        .slide-wrapper { position: relative; width: 95%; max-width: 950px; height: 320px; display: flex; justify-content: center; margin-top: 40px; }
+        .slide-container { position: absolute; top: 0; width: 100%; display: none; grid-template-columns: repeat(5, 1fr); gap: 15px; animation: masuk 0.4s ease-out; }
+        .active-slide { display: grid; }
+        @keyframes masuk { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+        .card { background: white; border-radius: 25px; padding: 25px 5px; text-align: center; box-shadow: 0 8px 15px rgba(0,0,0,0.1); cursor: pointer; border-bottom: 8px solid #6BCB77; transition: 0.2s; }
+        .card:hover { transform: scale(1.05); background: #f9fff9; }
+        .card h2 { font-size: 60px; margin: 0; color: #4A90E2; }
+        .card p { margin: 5px 0 0; font-weight: bold; color: #666; font-size: 14px; }
+        .controls { margin-top: 30px; display: flex; align-items: center; gap: 20px; }
+        .btn-nav { padding: 12px 25px; font-size: 18px; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; background: white; color: #4A90E2; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn-nav:hover:not(:disabled) { background: #4A90E2; color: white; }
+        .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="btn-kembali">⬅ Menu</a>
+        <h1 style="margin: 0;">🔢 Belajar Menghitung 1 - 30</h1>
+    </header>
+    <div class="slide-wrapper">
+        <div id="slide1" class="slide-container active-slide">
+            <div class="card" onclick="suara('Satu')"><h2>1</h2><p>Satu</p></div>
+            <div class="card" onclick="suara('Dua')"><h2>2</h2><p>Dua</p></div>
+            <div class="card" onclick="suara('Tiga')"><h2>3</h2><p>Tiga</p></div>
+            <div class="card" onclick="suara('Empat')"><h2>4</h2><p>Empat</p></div>
+            <div class="card" onclick="suara('Lima')"><h2>5</h2><p>Lima</p></div>
+        </div>
+        <div id="slide2" class="slide-container">
+            <div class="card" onclick="suara('Enam')"><h2>6</h2><p>Enam</p></div>
+            <div class="card" onclick="suara('Tujuh')"><h2>7</h2><p>Tujuh</p></div>
+            <div class="card" onclick="suara('Delapan')"><h2>8</h2><p>Delapan</p></div>
+            <div class="card" onclick="suara('Sembilan')"><h2>9</h2><p>Sembilan</p></div>
+            <div class="card" onclick="suara('Sepuluh')"><h2>10</h2><p>Sepuluh</p></div>
+        </div>
+        <div id="slide3" class="slide-container">
+            <div class="card" onclick="suara('Sebelas')"><h2>11</h2><p>Sebelas</p></div>
+            <div class="card" onclick="suara('Dua Belas')"><h2>12</h2><p>Dua Belas</p></div>
+            <div class="card" onclick="suara('Tiga Belas')"><h2>13</h2><p>Tiga Belas</p></div>
+            <div class="card" onclick="suara('Empat Belas')"><h2>14</h2><p>Empat Belas</p></div>
+            <div class="card" onclick="suara('Lima Belas')"><h2>15</h2><p>Lima Belas</p></div>
+        </div>
+        <div id="slide4" class="slide-container">
+            <div class="card" onclick="suara('Enam Belas')"><h2>16</h2><p>Enam Belas</p></div>
+            <div class="card" onclick="suara('Tujuh Belas')"><h2>17</h2><p>Tujuh Belas</p></div>
+            <div class="card" onclick="suara('Delapan Belas')"><h2>18</h2><p>Delapan Belas</p></div>
+            <div class="card" onclick="suara('Sembilan Belas')"><h2>19</h2><p>Sembilan Belas</p></div>
+            <div class="card" onclick="suara('Dua Puluh')"><h2>20</h2><p>Dua Puluh</p></div>
+        </div>
+        <div id="slide5" class="slide-container">
+            <div class="card" onclick="suara('Dua Puluh Satu')"><h2>21</h2><p>21</p></div>
+            <div class="card" onclick="suara('Dua Puluh Dua')"><h2>22</h2><p>22</p></div>
+            <div class="card" onclick="suara('Dua Puluh Tiga')"><h2>23</h2><p>23</p></div>
+            <div class="card" onclick="suara('Dua Puluh Empat')"><h2>24</h2><p>24</p></div>
+            <div class="card" onclick="suara('Dua Puluh Lima')"><h2>25</h2><p>25</p></div>
+        </div>
+        <div id="slide6" class="slide-container">
+            <div class="card" onclick="suara('Dua Puluh Enam')"><h2>26</h2><p>26</p></div>
+            <div class="card" onclick="suara('Dua Puluh Tujuh')"><h2>27</h2><p>27</p></div>
+            <div class="card" onclick="suara('Dua Puluh Delapan')"><h2>28</h2><p>28</p></div>
+            <div class="card" onclick="suara('Dua Puluh Sembilan')"><h2>29</h2><p>29</p></div>
+            <div class="card" onclick="suara('Tiga Puluh')"><h2>30</h2><p>Tiga Puluh</p></div>
+        </div>
+    </div>
+    <div class="controls">
+        <button id="prevBtn" class="btn-nav" onclick="nav(-1)" disabled>⬅ Mundur</button>
+        <div style="background:white; padding:8px 20px; border-radius:20px; font-weight:bold;" id="info">Halaman 1 / 6</div>
+        <button id="nextBtn" class="btn-nav" onclick="nav(1)">Maju ➡</button>
+    </div>
+    <script>
+        let index = 1; const total = 6;
+        function nav(arah) {
+            document.getElementById('slide' + index).classList.remove('active-slide');
+            index += arah;
+            document.getElementById('slide' + index).classList.add('active-slide');
+            document.getElementById('info').innerText = `Halaman ${index} / ${total}`;
+            document.getElementById('prevBtn').disabled = (index === 1);
+            document.getElementById('nextBtn').disabled = (index === total);
+        }
+        function suara(teks) { const msg = new SpeechSynthesisUtterance(teks); msg.lang = 'id-ID'; window.speechSynthesis.speak(msg); }
+    </script>
+</body>
+</html>

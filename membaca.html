@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membaca A-Z - TK Nurul Ikhlas</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+        header { width: 100%; padding: 20px; text-align: center; }
+        .btn-kembali { text-decoration: none; background: #FF85A1; color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; float: left; }
+        .slide-wrapper { position: relative; width: 90%; max-width: 900px; height: 350px; display: flex; justify-content: center; margin-top: 20px; }
+        .slide-container { position: absolute; top: 0; width: 100%; display: none; grid-template-columns: repeat(4, 1fr); gap: 20px; animation: bounceIn 0.5s ease; }
+        .active-slide { display: grid; }
+        @keyframes bounceIn { 0% { transform: scale(0.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        .kartu { background: white; border-radius: 40px; height: 230px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 15px 30px rgba(0,0,0,0.1); cursor: pointer; transition: 0.2s; border-bottom: 10px solid #FF85A1; }
+        .kartu:hover { transform: translateY(-10px) rotate(3deg); }
+        .huruf-teks { font-size: 90px; font-weight: bold; margin: 0; color: #4A90E2; }
+        .kecil-teks { font-size: 24px; color: #555; font-weight: bold; }
+        .nav-box { margin-top: 30px; display: flex; align-items: center; gap: 25px; }
+        .btn-nav { padding: 15px 35px; font-size: 20px; border: none; border-radius: 50px; background: white; color: #f5576c; font-weight: bold; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .btn-nav:hover:not(:disabled) { background: #f5576c; color: white; }
+        .btn-nav:disabled { opacity: 0.4; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="btn-kembali">⬅ Menu</a>
+        <h1 style="color:white; margin:0;">📖 Mari Membaca</h1>
+    </header>
+    <div class="slide-wrapper">
+        <div id="s1" class="slide-container active-slide">
+            <div class="kartu" onclick="bunyi('A')"><p class="huruf-teks">A</p><p class="kecil-teks">aa</p></div>
+            <div class="kartu" onclick="bunyi('B')"><p class="huruf-teks">B</p><p class="kecil-teks">bb</p></div>
+            <div class="kartu" onclick="bunyi('C')"><p class="huruf-teks">C</p><p class="kecil-teks">cc</p></div>
+            <div class="kartu" onclick="bunyi('D')"><p class="huruf-teks">D</p><p class="kecil-teks">dd</p></div>
+        </div>
+        <div id="s2" class="slide-container">
+            <div class="kartu" onclick="bunyi('E')"><p class="huruf-teks">E</p><p class="kecil-teks">ee</p></div>
+            <div class="kartu" onclick="bunyi('F')"><p class="huruf-teks">F</p><p class="kecil-teks">ff</p></div>
+            <div class="kartu" onclick="bunyi('G')"><p class="huruf-teks">G</p><p class="kecil-teks">gg</p></div>
+            <div class="kartu" onclick="bunyi('H')"><p class="huruf-teks">H</p><p class="kecil-teks">hh</p></div>
+        </div>
+        <div id="s3" class="slide-container">
+            <div class="kartu" onclick="bunyi('I')"><p class="huruf-teks">I</p><p class="kecil-teks">ii</p></div>
+            <div class="kartu" onclick="bunyi('J')"><p class="huruf-teks">J</p><p class="kecil-teks">jj</p></div>
+            <div class="kartu" onclick="bunyi('K')"><p class="huruf-teks">K</p><p class="kecil-teks">kk</p></div>
+            <div class="kartu" onclick="bunyi('L')"><p class="huruf-teks">L</p><p class="kecil-teks">ll</p></div>
+        </div>
+        <div id="s4" class="slide-container">
+            <div class="kartu" onclick="bunyi('M')"><p class="huruf-teks">M</p><p class="kecil-teks">mm</p></div>
+            <div class="kartu" onclick="bunyi('N')"><p class="huruf-teks">N</p><p class="kecil-teks">nn</p></div>
+            <div class="kartu" onclick="bunyi('O')"><p class="huruf-teks">O</p><p class="kecil-teks">oo</p></div>
+            <div class="kartu" onclick="bunyi('P')"><p class="huruf-teks">P</p><p class="kecil-teks">pp</p></div>
+        </div>
+        <div id="s5" class="slide-container">
+            <div class="kartu" onclick="bunyi('Q')"><p class="huruf-teks">Q</p><p class="kecil-teks">qq</p></div>
+            <div class="kartu" onclick="bunyi('R')"><p class="huruf-teks">R</p><p class="kecil-teks">rr</p></div>
+            <div class="kartu" onclick="bunyi('S')"><p class="huruf-teks">S</p><p class="kecil-teks">ss</p></div>
+            <div class="kartu" onclick="bunyi('T')"><p class="huruf-teks">T</p><p class="kecil-teks">tt</p></div>
+        </div>
+        <div id="s6" class="slide-container">
+            <div class="kartu" onclick="bunyi('U')"><p class="huruf-teks">U</p><p class="kecil-teks">uu</p></div>
+            <div class="kartu" onclick="bunyi('V')"><p class="huruf-teks">V</p><p class="kecil-teks">vv</p></div>
+            <div class="kartu" onclick="bunyi('W')"><p class="huruf-teks">W</p><p class="kecil-teks">ww</p></div>
+            <div class="kartu" onclick="bunyi('X')"><p class="huruf-teks">X</p><p class="kecil-teks">xx</p></div>
+        </div>
+        <div id="s7" class="slide-container">
+            <div class="kartu" onclick="bunyi('Y')"><p class="huruf-teks">Y</p><p class="kecil-teks">yy</p></div>
+            <div class="kartu" onclick="bunyi('Z')"><p class="huruf-teks">Z</p><p class="kecil-teks">zz</p></div>
+        </div>
+    </div>
+    <div class="nav-box">
+        <button id="p" class="btn-nav" onclick="geser(-1)" disabled>MUNDUR</button>
+        <span style="color:white; font-weight:bold;" id="info">Bagian 1 / 7</span>
+        <button id="n" class="btn-nav" onclick="geser(1)">LANJUT</button>
+    </div>
+    <script>
+        let hal = 1; const totalHal = 7;
+        function geser(arah) {
+            document.getElementById('s' + hal).classList.remove('active-slide');
+            hal += arah;
+            document.getElementById('s' + hal).classList.add('active-slide');
+            document.getElementById('info').innerText = `Bagian ${hal} / ${totalHal}`;
+            document.getElementById('p').disabled = (hal === 1);
+            document.getElementById('n').disabled = (hal === totalHal);
+        }
+        function bunyi(teks) { const u = new SpeechSynthesisUtterance(teks); u.lang = 'id-ID'; u.rate = 0.8; window.speechSynthesis.speak(u); }
+    </script>
+</body>
+</html>

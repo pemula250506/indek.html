@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kreatif - Papan Lukis</title>
+    <style>
+        body { font-family: 'Comic Sans MS', cursive, sans-serif; margin: 0; background: #fef1fb; display: flex; flex-direction: column; align-items: center; height: 100vh; overflow: hidden; }
+        header { width: 100%; padding: 15px; background: white; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .btn-home { text-decoration: none; background: #A66CFF; color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; }
+        canvas { background: white; border: 8px solid #A66CFF; border-radius: 30px; margin-top: 15px; cursor: crosshair; touch-action: none; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .toolbar { background: white; padding: 12px 25px; border-radius: 50px; display: flex; gap: 15px; align-items: center; box-shadow: 0 -5px 15px rgba(0,0,0,0.05); position: fixed; bottom: 15px; }
+        .tool { width: 40px; height: 40px; border-radius: 50%; border: 3px solid #eee; cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 20px; }
+        .active { border-color: #A66CFF; background: #f0e6ff; }
+        .btn-action { padding: 10px 20px; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; color: white; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="btn-home">⬅ Menu</a>
+        <h1 style="margin:0; font-size:1.5rem; color:#A66CFF;">🎨 Papan Lukis Ajaib</h1>
+        <div style="width:70px;"></div>
+    </header>
+    <canvas id="canvas"></canvas>
+    <div class="toolbar">
+        <input type="color" id="colorPicker" value="#A66CFF" style="width:40px; height:40px; border:none; cursor:pointer;">
+        <select id="brushSize" style="padding:8px; border-radius:10px;">
+            <option value="5">Tipis</option>
+            <option value="15" selected>Sedang</option>
+            <option value="30">Tebal</option>
+        </select>
+        <div class="tool" id="rainbowBtn" onclick="toggleRainbow()">🌈</div>
+        <button class="btn-action" style="background:#ff5e5e;" onclick="clearCanvas()">🗑️ Hapus</button>
+        <button class="btn-action" style="background:#2ecc71;" onclick="saveCanvas()">⭐ Simpan</button>
+    </div>
+    <script>
+        const canvas = document.getElementById('canvas'); const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth * 0.9; canvas.height = window.innerHeight * 0.65;
+        let drawing = false; let rainbowMode = false; let hue = 0;
+        function start(e) { drawing = true; draw(e); }
+        function end() { drawing = false; ctx.beginPath(); }
+        function draw(e) {
+            if (!drawing) return;
+            ctx.lineCap = 'round'; ctx.lineWidth = document.getElementById('brushSize').value;
+            if (rainbowMode) { ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`; hue = (hue + 5) % 360; }
+            else { ctx.strokeStyle = document.getElementById('colorPicker').value; }
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX || e.touches[0].clientX) - rect.left;
+            const y = (e.clientY || e.touches[0].clientY) - rect.top;
+            ctx.lineTo(x, y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(x, y);
+        }
+        function toggleRainbow() { rainbowMode = !rainbowMode; document.getElementById('rainbowBtn').classList.toggle('active'); }
+        function clearCanvas() { if(confirm("Hapus semua?")) ctx.clearRect(0, 0, canvas.width, canvas.height); }
+        function saveCanvas() { const link = document.createElement('a'); link.download = 'lukisanku.png'; link.href = canvas.toDataURL(); link.click(); }
+        canvas.addEventListener('mousedown', start); canvas.addEventListener('mouseup', end); canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); start(e); }); canvas.addEventListener('touchend', end); canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e); });
+    </script>
+</body>
+</html>
